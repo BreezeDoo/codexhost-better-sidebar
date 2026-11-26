@@ -1,0 +1,21 @@
+{
+  "name": "codexhost-better-sidebar",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "A file, change and outline workbench for CodexHost Web",
+  "scripts": {
+    "build:backend": "esbuild backend/src/index.mjs --bundle --platform=node --format=esm --minify --banner:js=\"import {createRequire} from 'module';const require=createRequire(import.meta.url);\" --outfile=backend/index.mjs",
+    "build:zip": "node scripts/build-zip.mjs",
+    "build": "npm run build:backend && npm run build:zip",
+    "test": "npm run build:backend && node tests/backend.test.mjs"
+  },
+  "dependencies": {
+    "diff": "^8.0.2",
+    "isomorphic-git": "1.35.0"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.2",
+    "fflate": "^0.8.3"
+  }
+}
